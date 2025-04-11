@@ -243,14 +243,35 @@ def ann_app():
                 risk_level = "🟢 Low Risk"
                 advice = "Your heart health looks good! Maintain a healthy diet and stay active. 😊"
                 color = "#4CAF50"  # Green
+                st.markdown("### 🍽️ Diet Preferences")
+                st.markdown("""
+                        **🎉 Low Risk & On a Diet**:
+                        - ✅ **Maintain a balanced diet** — fruits, greens, healthy fats.
+                        - 🍎 **Include colorful veggies, grains, and lean protein**.
+                        - ✨ Keep up your great work — **your heart is smiling!** 😊
+                        """)
             elif 40 <= predicted_percentage < 70:
                 risk_level = "🟡 Moderate Risk"
                 advice = "Consider lifestyle improvements like regular exercise and a heart-healthy diet. 🏃🍏"
                 color = "#FFC107"  # Yellow
+                st.markdown("### 🍽️ Diet Preferences")
+                st.markdown("""
+                        **⚡ Moderate Risk & On a Diet**:
+                        - 🍎 **Increase fiber intake** from fruits, veggies, whole grains.
+                        - 🥩 Balance **lean protein** and **healthy fats** (avoid junk).
+                        - 🏋️ **Exercise regularly** to enhance results.
+                        """)
             else:
                 risk_level = "🔴 High Risk"
                 advice = "It's recommended to consult a doctor for further evaluation and guidance. 🚑"
                 color = "#F44336"  # Red
+                st.markdown("### 🍽️ Diet Preferences")
+                st.markdown("""
+                        **🚨 High Risk & On a Diet**:
+                        - 🥗 Prioritize **whole grains**, **lean proteins**, **healthy fats**.
+                        - ❌ **Cut out processed, fried foods, and sugar-heavy snacks**.
+                        - 🩺 **Consult a dietitian** for an optimized heart-healthy plan.
+                        """)
 
             # Display the styled result box
             st.markdown(
@@ -270,83 +291,6 @@ def ann_app():
                 """,
                 unsafe_allow_html=True
             )
-
-            # ✅ Diet preference comes AFTER result display
-            st.markdown("### 🍽️ Diet Preferences")
-
-            # Force Yes/No selection — default "Select an option"
-            diet_preference = st.radio("Do you follow a specific diet?", ["Select an option", "Yes", "No"], index=0)
-
-            # Mock risk level variable for testing (replace with your logic)
-            risk_level = "🔴 High Risk"  # Example risk level, replace dynamically in your actual code
-            clean_risk_level = risk_level.split()[-1]  # Extracts "Low", "Moderate", or "High"
-
-            # Submit button logic
-            if st.button("Submit"):
-                if diet_preference == "Select an option":
-                    st.warning("⚠️ Please select **Yes** or **No** for personalized diet advice.")
-
-                elif diet_preference == "Yes":
-                    st.markdown("### ✅ Tailored Diet Advice Based on Your Risk Level")
-                    if clean_risk_level == "High":
-                        st.markdown("""
-                        **🚨 High Risk & On a Diet**:
-                        - 🥗 Prioritize **whole grains**, **lean proteins**, **healthy fats**.
-                        - ❌ **Cut out processed, fried foods, and sugar-heavy snacks**.
-                        - 🩺 **Consult a dietitian** for an optimized heart-healthy plan.
-                        """)
-                    elif clean_risk_level == "Moderate":
-                        st.markdown("""
-                        **⚡ Moderate Risk & On a Diet**:
-                        - 🍎 **Increase fiber intake** from fruits, veggies, whole grains.
-                        - 🥩 Balance **lean protein** and **healthy fats** (avoid junk).
-                        - 🏋️ **Exercise regularly** to enhance results.
-                        """)
-                    elif clean_risk_level == "Low":
-                        st.markdown("""
-                        **🎉 Low Risk & On a Diet**:
-                        - ✅ **Maintain a balanced diet** — fruits, greens, healthy fats.
-                        - 🍎 **Include colorful veggies, grains, and lean protein**.
-                        - ✨ Keep up your great work — **your heart is smiling!** 😊
-                        """)
-                    else:
-                        st.markdown("⚠️ Unexpected risk level detected. Please check your inputs.")
-
-                elif diet_preference == "No":
-                    st.markdown("### 🍽️ General Health Tips (No Specific Diet)")
-                    if clean_risk_level == "High":
-                        st.markdown("""
-                        **🚨 High Risk & No Diet**:
-                        - 🥗 Start **heart-friendly meals** — greens, grains, lean meats.
-                        - ❌ **Avoid fried snacks, sugar-loaded drinks, and junk food**.
-                        - 💪 **Small changes = big impact** — start small, stay consistent!
-                        """)
-                    elif clean_risk_level == "Moderate":
-                        st.markdown("""
-                        **⚡ Moderate Risk & No Diet**:
-                        - 🥩 Add more **greens, beans, lean protein** (cut processed snacks).
-                        - ❌ **Reduce salt and sugary snacks**.
-                        - 🏋️ **Daily walks/exercise** = better heart strength.
-                        """)
-                    elif clean_risk_level == "Low":
-                        st.markdown("""
-                        **🎉 Low Risk & No Diet**:
-                        - 🍲 Stick to **balanced meals** and **home-cooked foods**.
-                        - 🥗 **Focus on fresh ingredients** — less processed, more natural.
-                        - 🌟 **Your habits now = lifelong heart protection!** 💙
-                        """)
-                    else:
-                        st.markdown("⚠️ Unexpected risk level detected. Please check your inputs.")
-
-
-
-
-
-
-
-
-
-            # Add a fallback for unexpected inputs if needed
 
 
 
